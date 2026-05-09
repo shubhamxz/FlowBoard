@@ -1,5 +1,7 @@
 # flowboard
 
+**live demo:** [proud-healing-production-a0ad.up.railway.app](https://proud-healing-production-a0ad.up.railway.app/)
+
 a brutalist-style task manager app built on next.js 14. handles the basics (todo -> doing -> done) without the enterprise bloat.
 
 i was looking for a really simple task manager that wasn't bloated with 100 features i'll never use. decided to build my own. flowboard is a brutalist-style kanban app built with next.js.
