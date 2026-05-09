@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fail, zodFail } from "@/lib/api";
-import { signToken, setSessionCookie, verifyPassword } from "@/lib/auth";
+import { signToken, setSessionCookie } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { loginSchema } from "@/lib/validators";
+import bcrypt from "bcryptjs";
 import { ZodError } from "zod";
 
 export async function POST(req: NextRequest) {
@@ -12,7 +13,7 @@ export async function POST(req: NextRequest) {
     const user = db.userFindByEmail(body.email.toLowerCase());
     if (!user) return fail("Invalid credentials", 401);
 
-    const matched = await verifyPassword(body.password, user.password_hash);
+    const matched = await bcrypt.compare(body.password, user.password_hash);
     if (!matched) return fail("Invalid credentials", 401);
 
     const token = await signToken({

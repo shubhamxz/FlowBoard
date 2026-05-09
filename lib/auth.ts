@@ -1,4 +1,3 @@
-import bcrypt from "bcryptjs";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -13,14 +12,6 @@ export type AuthUser = {
   email: string;
   role: "admin" | "member";
 };
-
-export async function hashPassword(raw: string) {
-  return bcrypt.hash(raw, 10);
-}
-
-export async function verifyPassword(raw: string, hash: string) {
-  return bcrypt.compare(raw, hash);
-}
 
 export async function signToken(user: AuthUser) {
   return new SignJWT({ id: user.id, email: user.email, role: user.role } as any)

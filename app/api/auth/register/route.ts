@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fail, zodFail } from "@/lib/api";
-import { hashPassword } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { registerSchema } from "@/lib/validators";
+import bcrypt from "bcryptjs";
 import { ZodError } from "zod";
 
 export async function POST(req: NextRequest) {
   try {
     const body = registerSchema.parse(await req.json());
-    const passwordHash = await hashPassword(body.password);
+    const passwordHash = await bcrypt.hash(body.password, 10);
 
     const user = db.userCreate({
       firstName: body.firstName,
