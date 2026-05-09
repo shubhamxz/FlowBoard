@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  border-radius: 0 !important;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Mono', monospace;
+  letter-spacing: -0.02em;
+  color: #000;
+}
+
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  background: #fff !important;
+  color: #000 !important;
+  border: 1.5px solid #d1d5db !important;
+  padding: 0.625rem 0.75rem !important;
+  outline: none !important;
+  width: 100%;
+  transition: border-color 0.15s ease !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+select option {
+  background: #fff;
+  color: #000;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+a { text-decoration: none; color: inherit; }
+
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider;
+    background: #000; color: #fff; border: 1.5px solid #000;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  .btn-primary:hover {
+    box-shadow: 3px 3px 0 #000; transform: translate(-1px, -1px);
+  }
+  .btn-primary:active {
+    box-shadow: none; transform: translate(0, 0);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider;
+    background: #fff; color: #374151; border: 1.5px solid #d1d5db;
+    transition: all 0.15s ease;
+  }
+  .btn-outline:hover { border-color: #000; color: #000; }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider;
+    background: #fff; color: #6b7280; border: 1.5px solid #e5e7eb;
+    transition: all 0.15s ease;
+  }
+  .btn-ghost:hover { border-color: #000; color: #000; }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider;
+    background: #fff; color: #9ca3af; border: 1.5px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .btn-danger:hover { color: #000; border-color: #d1d5db; }
+
+  .card {
+    border: 1.5px solid #e5e7eb; background: #fff; padding: 1.25rem;
+    transition: border-color 0.15s ease;
+  }
+  .card:hover { border-color: #9ca3af; }
+
+  .card-elevated {
+    border: 1.5px solid #e5e7eb; background: #fafafa; padding: 1.25rem;
+  }
+
+  .stat-card {
+    background: #fff; padding: 1.5rem;
+  }
+
+  .stat-mini {
+    background: #fafafa; border: 1px solid #e5e7eb;
+  }
+
+  .label {
+    @apply block text-[11px] font-medium uppercase tracking-widest mb-2;
+    color: #6b7280;
+  }
+
+  .section-title {
+    @apply text-[11px] font-semibold uppercase tracking-widest;
+    color: #6b7280;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest;
+    border: 1px solid currentColor;
+  }
+  .badge-todo { color: #6b7280; border-color: #d1d5db; }
+  .badge-doing { color: #000; border-color: #374151; background: #f3f4f6; }
+  .badge-done { color: #9ca3af; border-color: #e5e7eb; text-decoration: line-through; }
+  .badge-low { color: #6b7280; border-color: #d1d5db; }
+  .badge-medium { color: #374151; border-color: #9ca3af; }
+  .badge-high { color: #000; border-color: #000; background: #f3f4f6; }
+
+  .progress-track {
+    @apply w-full h-1.5; background: #f3f4f6; border: 1px solid #e5e7eb; overflow: hidden;
+  }
+  .progress-fill { @apply h-full; background: #000; transition: width 0.4s ease; }
+
+  .progress-track-lg {
+    @apply w-full h-2.5; background: #f3f4f6; border: 1px solid #e5e7eb; overflow: hidden;
+  }
+  .progress-fill-lg { @apply h-full; background: #000; transition: width 0.4s ease; }
+
+  .divider { @apply border-t; border-color: #e5e7eb; }
+
+  .alert-error {
+    @apply px-4 py-3 text-xs font-medium;
+    background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  }
+
+  .alert-success {
+    @apply px-4 py-3 text-xs font-medium;
+    background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534;
+  }
+
+  .radio-group {
+    @apply flex items-center gap-4;
+  }
+  .radio-group label {
+    @apply flex items-center gap-2 text-sm cursor-pointer;
+    color: #374151;
+  }
+  .radio-group input[type="radio"] {
+    width: auto !important;
+    accent-color: #000;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .member-tag {
+    @apply flex items-center gap-2 px-3 py-1.5 text-[11px];
+    background: #fff; border: 1.5px solid #e5e7eb; color: #374151;
+  }
+  .member-tag .role-label {
+    @apply text-[9px] uppercase tracking-widest; color: #9ca3af;
+  }
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb { background: #d1d5db; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeIn 0.3s ease forwards; }
