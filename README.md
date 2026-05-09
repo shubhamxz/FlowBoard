@@ -28,6 +28,12 @@ npm run dev
 
 then go to `http://localhost:3000`
 
+for production (railway), set:
+
+```env
+NEXT_PUBLIC_APP_URL=https://proud-healing-production-a0ad.up.railway.app
+```
+
 ### quick notes
 - the DB wipes if the actual node process restarts. it's strictly for local dev/testing right now.
 - want to see the admin features? just select "Admin" when you register a new account on the UI. no manual DB tweaks needed.
